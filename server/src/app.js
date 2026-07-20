@@ -6,8 +6,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.get("/api/health", (req, res) => {
-  res.json({ message: "API is running" });
+app.get("/api", (req, res) => {
+  res.json({ message: "Connected successfully" });
 });
 
 app.listen(3000, () => {
