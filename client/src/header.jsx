@@ -1,5 +1,6 @@
 import Search from "./components/search";
 import { Button } from "@/components/ui/button";
+import { useTheme } from "@/context/theme-context";
 import {
   Sheet,
   SheetClose,
@@ -15,8 +16,9 @@ import {
   faUser,
   faShoppingCart,
   faBars,
+  faMoon,
+  faSun,
 } from "@fortawesome/free-solid-svg-icons";
-import { MenuIcon } from "lucide-react";
 
 const navigationLinks = [
   { href: "/", label: "Home" },
@@ -25,11 +27,16 @@ const navigationLinks = [
 ];
 
 export default function Header() {
+  const { resolvedTheme, toggleTheme } = useTheme();
+  const isDark = resolvedTheme === "dark";
+
   return (
     <header className="flex items-center gap-3 p-2 lg:grid lg:grid-cols-12">
       <div className="min-w-0 flex-1 lg:col-span-2">
         <img
-          src="/audioverse-logo.svg"
+          src={
+            isDark ? "/audioverse-logo.svg" : "/audioverse-logo-light.svg"
+          }
           alt="Audioverse Logo"
           className="h-auto w-40 sm:w-48"
         />
@@ -55,6 +62,16 @@ export default function Header() {
         <Search />
       </div>
       <div className="ml-auto flex items-center justify-end gap-4 lg:col-span-2 lg:ml-0">
+        <Button
+          type="button"
+          variant="ghost"
+          size="icon"
+          onClick={toggleTheme}
+          aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
+          title={`Switch to ${isDark ? "light" : "dark"} mode`}
+        >
+          <FontAwesomeIcon icon={isDark ? faSun : faMoon} className="text-xl" />
+        </Button>
         <FontAwesomeIcon icon={faUser} className="text-xl" />
         <FontAwesomeIcon icon={faShoppingCart} className="text-xl" />
       </div>
@@ -75,7 +92,9 @@ export default function Header() {
           <SheetHeader>
             <SheetTitle>
               <img
-                src="/audioverse-logo.svg"
+                src={
+                  isDark ? "/audioverse-logo.svg" : "/audioverse-logo-light.svg"
+                }
                 alt="Audioverse Logo"
                 className="h-auto w-40 sm:w-48"
               />
