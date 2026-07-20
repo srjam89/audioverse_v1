@@ -21,9 +21,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const navigationLinks = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About Us" },
-  { href: "/contact", label: "Contact Us" },
+  { href: "/", label: "Home", active: true },
+  { href: "/about", label: "About Us", active: false },
+  { href: "/contact", label: "Contact Us", active: false },
 ];
 
 export default function Header() {
@@ -34,9 +34,7 @@ export default function Header() {
     <header className="flex items-center gap-3 p-2 lg:grid lg:grid-cols-12">
       <div className="min-w-0 flex-1 lg:col-span-2">
         <img
-          src={
-            isDark ? "/audioverse-logo.svg" : "/audioverse-logo-light.svg"
-          }
+          src={isDark ? "/audioverse-logo.svg" : "/audioverse-logo-light.svg"}
           alt="Audioverse Logo"
           className="h-auto w-40 sm:w-48"
         />
@@ -50,7 +48,10 @@ export default function Header() {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="border-b-2 border-transparent py-2 transition-colors hover:border-(--accent)"
+                aria-current={link.active ? "page" : undefined}
+                className={`border-b-2 py-2 transition-colors hover:border-(--accent) ${
+                  link.active ? "border-(--accent)" : "border-transparent"
+                }`}
               >
                 {link.label}
               </a>
@@ -114,7 +115,12 @@ export default function Header() {
                     render={
                       <a
                         href={link.href}
-                        className="block rounded-lg px-3 py-3 text-base transition-colors hover:bg-accent hover:text-accent-foreground"
+                        aria-current={link.active ? "page" : undefined}
+                        className={`block rounded-lg border-l-2 px-3 py-3 text-base transition-colors hover:bg-accent hover:text-accent-foreground ${
+                          link.active
+                            ? "border-(--accent)"
+                            : "border-transparent"
+                        }`}
                       />
                     }
                   >
