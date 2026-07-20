@@ -6,6 +6,7 @@ import {
   faArrowRotateLeft,
   faLock,
 } from "@fortawesome/free-solid-svg-icons";
+import HeroCarousel from "@/components/hero-carousel";
 
 export default function Hero() {
   return (
@@ -86,7 +87,9 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="hidden lg:col-span-6 lg:block"></div>
+      <div className="col-span-12 h-72 min-h-0 sm:h-96 lg:col-span-6 lg:h-auto">
+        <HeroCarousel />
+      </div>
     </section>
   );
 }

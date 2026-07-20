@@ -14,7 +14,7 @@ function App() {
   }, []);
 
   return (
-    <section className="mx-auto min-h-screen w-[calc(100%-2rem)] max-w-[1700px]">
+    <section className="mx-auto min-h-dvh w-[calc(100%-2rem)] max-w-[1700px]">
       <Header />
       <Hero />
     </section>
