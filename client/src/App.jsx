@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 
-import "./App.css";
+import "./index.css";
 import api from "./services/api";
+import Header from "./header";
 
 function App() {
   useEffect(() => {
@@ -12,9 +13,8 @@ function App() {
   }, []);
 
   return (
-    <section id="center">
-      <h1>hello world</h1>
-      <section id="spacer"></section>
+    <section className="mx-auto min-h-screen w-full max-w-[1400px]">
+      <Header />
     </section>
   );
 }
