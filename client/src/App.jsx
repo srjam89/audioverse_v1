@@ -13,7 +13,7 @@ function App() {
   }, []);
 
   return (
-    <section className="mx-auto min-h-screen w-full max-w-[1400px]">
+    <section className="mx-auto min-h-screen w-full">
       <Header />
     </section>
   );
