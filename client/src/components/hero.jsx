@@ -87,7 +87,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="col-span-12 h-72 min-h-0 sm:h-96 lg:col-span-6 lg:h-auto">
+      <div className="relative col-span-12 h-72 min-h-0 sm:h-96 lg:col-span-6 lg:h-auto">
         <HeroCarousel />
       </div>
     </section>
