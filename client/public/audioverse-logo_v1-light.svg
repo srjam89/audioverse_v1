@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 241" role="img" aria-labelledby="title">
+  <title id="title">Audioverse - Hear everything. Own every moment.</title>
+  <defs>
+    <linearGradient id="mark-gradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b400e8"/>
+      <stop offset="36%" stop-color="#6430e8"/>
+      <stop offset="70%" stop-color="#00aeca"/>
+      <stop offset="100%" stop-color="#16c94f"/>
+    </linearGradient>
+  </defs>
+
+  <g fill="none" stroke="url(#mark-gradient)" stroke-linejoin="miter">
+    <path d="M69 45h190L165 207 72 45" stroke-width="21"/>
+    <path d="M136 91h27" stroke-width="20"/>
+    <path d="M151 119h25l18 49 43-90" stroke-width="21"/>
+  </g>
+
+  <text
+    x="315"
+    y="151"
+    fill="#111318"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="76"
+    font-weight="300"
+    letter-spacing="9"
+  >AUDIOVERSE</text>
+
+  <text
+    y="200"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="20"
+    font-weight="600"
+    letter-spacing="6"
+  >
+    <tspan x="315" fill="#118b38">HEAR EVERYTHING.</tspan>
+    <tspan x="645" fill="#9d00c8">OWN EVERY MOMENT.</tspan>
+  </text>
+</svg>

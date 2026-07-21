@@ -34,7 +34,11 @@ export default function Header() {
     <header className="flex items-center gap-3 p-2 lg:grid lg:grid-cols-12">
       <div className="min-w-0 flex-1 lg:col-span-2">
         <img
-          src={isDark ? "/audioverse-logo.svg" : "/audioverse-logo-light.svg"}
+          src={
+            isDark
+              ? "/audioverse-logo_v1.svg"
+              : "/audioverse-logo_v1-light.svg"
+          }
           alt="Audioverse Logo"
           className="h-auto w-40 sm:w-48"
         />
@@ -94,7 +98,9 @@ export default function Header() {
             <SheetTitle>
               <img
                 src={
-                  isDark ? "/audioverse-logo.svg" : "/audioverse-logo-light.svg"
+                  isDark
+                    ? "/audioverse-logo_v1.svg"
+                    : "/audioverse-logo_v1-light.svg"
                 }
                 alt="Audioverse Logo"
                 className="h-auto w-40 sm:w-48"
