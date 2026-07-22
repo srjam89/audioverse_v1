@@ -95,13 +95,16 @@ export default function HeroCarousel() {
         {!isLoading &&
           !error &&
           slides.map((slide, index) => (
-            <CarouselItem key={`${slide.url}-${slide.image}`} className="h-full">
+            <CarouselItem
+              key={`${slide.url}-${slide.image}`}
+              className="h-full"
+            >
               <a
                 href={slide.url}
                 className="block h-full"
                 aria-label={`View promotion ${index + 1}`}
               >
-                <picture className="block h-full overflow-hidden">
+                <picture className="block h-full overflow-hidden rounded-md">
                   {/* Use the mobile asset below Tailwind's lg breakpoint. */}
                   {slide.image_mobile && (
                     <source

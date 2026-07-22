@@ -1,6 +1,7 @@
 import Search from "./components/search";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/context/theme-context";
+import { Link, NavLink } from "react-router-dom";
 import {
   Sheet,
   SheetClose,
@@ -21,9 +22,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const navigationLinks = [
-  { href: "/", label: "Home", active: true },
-  { href: "/about", label: "About Us", active: false },
-  { href: "/contact", label: "Contact Us", active: false },
+  { to: "/", label: "Home" },
+  { to: "/about", label: "About Us" },
+  { to: "/contact", label: "Contact Us" },
 ];
 
 export default function Header() {
@@ -33,15 +34,17 @@ export default function Header() {
   return (
     <header className="flex items-center gap-3 p-2 lg:grid lg:grid-cols-12">
       <div className="min-w-0 flex-1 lg:col-span-2">
-        <img
-          src={
-            isDark
-              ? "/audioverse-logo_v1.svg"
-              : "/audioverse-logo_v1-light.svg"
-          }
-          alt="Audioverse Logo"
-          className="h-auto w-40 sm:w-48"
-        />
+        <Link to="/" aria-label="Audioverse home">
+          <img
+            src={
+              isDark
+                ? "/audioverse-logo_v1.svg"
+                : "/audioverse-logo_v1-light.svg"
+            }
+            alt="Audioverse Logo"
+            className="h-auto w-40 sm:w-48"
+          />
+        </Link>
       </div>
       <nav
         className="hidden lg:col-span-4 lg:block"
@@ -49,16 +52,18 @@ export default function Header() {
       >
         <ul className="flex items-center justify-start gap-8">
           {navigationLinks.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                aria-current={link.active ? "page" : undefined}
-                className={`border-b-2 py-2 transition-colors hover:border-(--accent) ${
-                  link.active ? "border-(--accent)" : "border-transparent"
-                }`}
+            <li key={link.to}>
+              <NavLink
+                to={link.to}
+                end={link.to === "/"}
+                className={({ isActive }) =>
+                  `border-b-2 py-2 transition-colors hover:border-(--accent) ${
+                    isActive ? "border-(--accent)" : "border-transparent"
+                  }`
+                }
               >
                 {link.label}
-              </a>
+              </NavLink>
             </li>
           ))}
         </ul>
@@ -116,17 +121,19 @@ export default function Header() {
           <nav className="px-4" aria-label="Mobile navigation">
             <ul className="flex flex-col gap-2">
               {navigationLinks.map((link) => (
-                <li key={link.href}>
+                <li key={link.to}>
                   <SheetClose
                     render={
-                      <a
-                        href={link.href}
-                        aria-current={link.active ? "page" : undefined}
-                        className={`block rounded-lg border-l-2 px-3 py-3 text-base transition-colors hover:bg-accent hover:text-accent-foreground ${
-                          link.active
-                            ? "border-(--accent)"
-                            : "border-transparent"
-                        }`}
+                      <NavLink
+                        to={link.to}
+                        end={link.to === "/"}
+                        className={({ isActive }) =>
+                          `block rounded-lg border-l-2 px-3 py-3 text-base transition-colors hover:bg-accent hover:text-accent-foreground ${
+                            isActive
+                              ? "border-(--accent)"
+                              : "border-transparent"
+                          }`
+                        }
                       />
                     }
                   >

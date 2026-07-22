@@ -1,13 +1,21 @@
 import "./index.css";
-import Header from "./header";
-import Hero from "./components/hero";
+import { Route, Routes } from "react-router-dom";
+import StoreLayout from "@/layouts/StoreLayout";
+import About from "@/pages/About";
+import Contact from "@/pages/Contact";
+import Home from "@/pages/Home";
+import NotFound from "@/pages/NotFound";
 
 function App() {
   return (
-    <section className="mx-auto min-h-dvh w-[calc(100%-2rem)] max-w-[1700px]">
-      <Header />
-      <Hero />
-    </section>
+    <Routes>
+      <Route element={<StoreLayout />}>
+        <Route index element={<Home />} />
+        <Route path="about" element={<About />} />
+        <Route path="contact" element={<Contact />} />
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    </Routes>
   );
 }
 
