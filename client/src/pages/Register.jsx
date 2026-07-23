@@ -131,7 +131,7 @@ export default function Register() {
               message={notification.message}
             />
           )}
-          <Field data-invalid={!!errors.firstname}>
+          <Field data-invalid={!!errors.firstname} className="mb-4">
             <Input
               className="glass_input"
               type="text"
@@ -149,7 +149,7 @@ export default function Register() {
             )}
           </Field>
 
-          <Field data-invalid={!!errors.lastname}>
+          <Field data-invalid={!!errors.lastname} className="mb-4">
             <Input
               className="glass_input"
               type="text"
@@ -167,7 +167,7 @@ export default function Register() {
             )}
           </Field>
 
-          <Field data-invalid={!!errors.email}>
+          <Field data-invalid={!!errors.email} className="mb-4">
             <Input
               className="glass_input"
               type="email"
@@ -185,7 +185,7 @@ export default function Register() {
             )}
           </Field>
 
-          <Field data-invalid={!!errors.password}>
+          <Field data-invalid={!!errors.password} className="mb-4">
             <div className="relative pb-5">
               <Input
                 className="glass_input"
@@ -213,7 +213,7 @@ export default function Register() {
             )}
           </Field>
 
-          <Field data-invalid={!!errors.confirmpassword}>
+          <Field data-invalid={!!errors.confirmpassword} className="mb-4">
             <div className="relative">
               <Input
                 className="glass_input"

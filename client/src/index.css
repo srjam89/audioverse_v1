@@ -225,8 +225,18 @@ body {
 .success {
   background-color: #00ff66;
   color: #000;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    0 0 15px rgba(0, 255, 102, 0.5),
+    0 0 35px rgba(0, 255, 102, 0.35),
+    0 0 60px rgba(0, 255, 102, 0.2);
 }
 .error {
   background-color: oklch(57.7% 0.245 27.325);
   color: #fff;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    0 0 15px rgba(255, 60, 60, 0.4),
+    0 0 35px rgba(255, 60, 60, 0.3),
+    0 0 60px rgba(255, 60, 60, 0.15);
 }
