@@ -32,7 +32,7 @@ export default function Header() {
   const isDark = resolvedTheme === "dark";
 
   return (
-    <header className="flex items-center gap-3 p-2 lg:grid lg:grid-cols-12">
+    <header className="flex items-center gap-3 p-2 lg:grid lg:grid-cols-12 mb-4">
       <div className="min-w-0 flex-1 lg:col-span-2">
         <Link to="/" aria-label="Audioverse home">
           <img
@@ -82,7 +82,9 @@ export default function Header() {
         >
           <FontAwesomeIcon icon={isDark ? faSun : faMoon} className="text-xl" />
         </Button>
-        <FontAwesomeIcon icon={faUser} className="text-xl" />
+        <Link to="/login" aria-label="Log in">
+          <FontAwesomeIcon icon={faUser} className="text-xl" />
+        </Link>
         <FontAwesomeIcon icon={faShoppingCart} className="text-xl" />
       </div>
       <Sheet>

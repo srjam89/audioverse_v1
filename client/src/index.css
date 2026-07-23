@@ -185,3 +185,9 @@ body {
     @apply bg-background font-sans;
   }
 }
+
+.glass_card {
+  background: rgba(20, 20, 20, 0.75);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 255, 100, 0.15);
+}
