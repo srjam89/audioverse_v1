@@ -9,6 +9,10 @@ import {
   faCircleExclamation,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import { registerUser } from "@/services/auth-api";
+import Notifications from "@/components/notification";
+import { Spinner } from "@/components/ui/spinner";
+import { useNavigate } from "react-router-dom";
 
 const initialValues = {
   firstname: "",
@@ -21,10 +25,13 @@ const initialValues = {
 export default function Register() {
   const { resolvedTheme } = useTheme();
   const isDark = resolvedTheme === "dark";
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [values, setValues] = useState(initialValues);
   const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [notification, setNotification] = useState(null);
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -64,7 +71,7 @@ export default function Register() {
     return nextErrors;
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const nextErrors = validate();
     setErrors(nextErrors);
@@ -73,7 +80,33 @@ export default function Register() {
       return;
     }
 
-    console.log(values);
+    try {
+      setIsSubmitting(true);
+      const response = await registerUser({
+        firstname: values.firstname.trim(),
+        lastname: values.lastname.trim(),
+        email: values.email.trim(),
+        password: values.password.trim(),
+      });
+      if (response.status === "success") {
+        setNotification({
+          status: response.status,
+          message: response.message,
+        });
+        setValues(initialValues);
+        setTimeout(() => {
+          navigate("/login");
+        }, 1500);
+      }
+    } catch (error) {
+      console.log(error);
+      setNotification({
+        status: "error",
+        message: "An error occurred while registering the customer",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -84,11 +117,20 @@ export default function Register() {
         autoComplete="off"
         onSubmit={handleSubmit}
         className={`${isDark ? "glass_card" : "glass_card_light"} col-span-1 p-4 rounded-lg`}
+        disabled={isSubmitting}
+        aria-busy={isSubmitting}
       >
         <h1 className="text-lg font-semibold text-center mb-6 mt-4">
           Register
         </h1>
+
         <FieldGroup className="sm:w-4/6 md:w-3/6 lg:w-3/6 mx-auto">
+          {notification && (
+            <Notifications
+              status={notification.status}
+              message={notification.message}
+            />
+          )}
           <Field data-invalid={!!errors.firstname}>
             <Input
               className="glass_input"
@@ -196,7 +238,20 @@ export default function Register() {
             )}
           </Field>
 
-          <Button type="submit">Register</Button>
+          <Button
+            type="submit"
+            disabled={isSubmitting}
+            aria-busy={isSubmitting}
+          >
+            {isSubmitting ? (
+              <>
+                <Spinner />
+                Registering...
+              </>
+            ) : (
+              "Register"
+            )}
+          </Button>
         </FieldGroup>
       </form>
     </section>
